@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const pessoa = require('./routes/pessoas');
+const pessoas = require('./routes/pessoas');
+const imoveis = require('./routes/imoveis');
+const aluguel = require('./routes/aluguel');
 
 const app = express();
 
@@ -11,7 +13,9 @@ app.get('/',(req,res)=>{
     res.send('Hello World');
 })
 
-app.use('/pessoas', pessoa);
+app.use('/pessoas', pessoas);
+app.use('/imoveis', imoveis);
+app.use('/aluguel',aluguel);
 
 app.listen(8080);
 
