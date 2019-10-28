@@ -1,16 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Login from './pages/login';
+import api from './services/api'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Rest In Fun</h1>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+
+    constructor(props){
+        super(props)
+
+        api
+            .get('/pessoas')
+            .then(resultado => {
+                console.log(resultado)
+            })
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <Login />
+            </div>
+        );
+    }
 }
 
 export default App;
