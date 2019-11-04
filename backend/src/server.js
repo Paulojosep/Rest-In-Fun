@@ -6,8 +6,10 @@ const aluguel = require('./routes/aluguel');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.set('views',__dirname + '/views')
+app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
+app.use(bodyParser.json());
 
 app.get('/',(req,res)=>{
     res.send('Hello World');

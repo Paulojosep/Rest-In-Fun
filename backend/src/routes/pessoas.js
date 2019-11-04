@@ -5,6 +5,12 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
+// Dados
+
+
+
+//////////////////q
+
 router.get('/',(req,res)=> {
     var sql = "SELECT * FROM pessoa";
     db.query(sql,(err, rows, fields) => {
@@ -26,23 +32,13 @@ router.get('/:id',(req,res)=>{
     })
 })
 
-router.post('/user', (req, res) => {
-    const nome = req.body.name;
-    const cpf = req.body.cpf;
-    const telefone = req.body.telefone;
-    const email = req.body.email;
-    const sexo = req.body.sexo;
-    const local = req.body.local;
-    const tipo = req.body.tipo;
-
-    var sql = (`INSERT INTO pessoa(nome,cpf,telefone,email,sexo,local,tipo)
-            VALUES
-            ('${nome},'${cpf}'${telefone}','${email}','${sexo}','${local}','${tipo}')`,res)
-    db.query(sql,(err,rows)=>{
+router.post('/usuario',(req,res)=> {
+    var sql = "SELECT * FROM usuario";
+    db.query(sql,(err, rows, fields) => {
         if(err){
-            res.status(500).send({ error: "Something failed !"})
+            res.status(500).send({ error: "something failed !"})
         }
-        res.json(rows)
+        res.render('usuario.ejs');
     })
 })
 
