@@ -5,12 +5,6 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-// Dados
-
-
-
-//////////////////q
-
 router.get('/',(req,res)=> {
     var sql = "SELECT * FROM pessoa";
     db.query(sql,(err, rows, fields) => {
@@ -32,13 +26,14 @@ router.get('/:id',(req,res)=>{
     })
 })
 
-router.post('/usuario',(req,res)=> {
-    var sql = "SELECT * FROM usuario";
+router.put('/contrato',(req,res)=> {
+    var sql = "SELECT * FROM contrato";
     db.query(sql,(err, rows, fields) => {
         if(err){
             res.status(500).send({ error: "something failed !"})
         }
-        res.render('usuario.ejs');
+        //res.render('usuario.ejs');
+        res.json(rows);
     })
 })
 
