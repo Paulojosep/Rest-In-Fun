@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 const pessoas = require('./routes/pessoas');
 const imoveis = require('./routes/imoveis');
@@ -10,6 +11,7 @@ app.set('views',__dirname + '/views')
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/',(req,res)=>{
     res.send('Hello World');
